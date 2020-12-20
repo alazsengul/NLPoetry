@@ -36,7 +36,7 @@ def index():
     return(render_template("index.html"))
 
 def poem_generator(file, word, num_sen=12):
-    spacy_nlp = spacy.load("en")
+    spacy_nlp = spacy.load("en_core_web_sm")
     subject = spacy_nlp(word)
     sentences = pd.read_csv(os.getcwd() +'/'+ file).fillna("")
     poem_id = int()
