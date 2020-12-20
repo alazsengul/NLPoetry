@@ -35,7 +35,7 @@ poets_to_files = {
 def index():
     return(render_template("index.html"))
 
-def poem_generator(file, word, num_sen=12):
+def poem_generator(file, word, num_sen=6):
     spacy_nlp = spacy.load("en_core_web_sm")
     subject = spacy_nlp(word)
     sentences = pd.read_csv(os.getcwd() +'/'+ file).fillna("")
@@ -101,7 +101,7 @@ def fetch_poems():
     fake_poem = poem_format(fake_poem)
 
     fake_poem = "<br>".join([i for i in fake_poem.lower().splitlines()])
-    poem_text = "<br>".join([i for i in poem_text.lower().splitlines() if i][:12])
+    poem_text = "<br>".join([i for i in poem_text.lower().splitlines() if i][:6])
 
     return(jsonify(poem_label=poem_label, poem_text=poem_text, fake_poem=fake_poem))
 

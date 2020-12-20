@@ -104,7 +104,7 @@ var evaluate_poems = function() {
         $("#first").attr("class", "rounded-lg shadow-md px-8 py-6 bg-white text-left text-green-600");
         $("#second").attr("class", "rounded-lg shadow-md px-8 py-6 bg-white text-left text-red-600");
     }
-    else {
+    else if ($("#second").find("#real").length == 1) {
         $("#first").attr("class", "rounded-lg shadow-md px-8 py-6 bg-white text-left text-red-600");
         $("#second").attr("class", "rounded-lg shadow-md px-8 py-6 bg-white text-left text-green-600");
     }
