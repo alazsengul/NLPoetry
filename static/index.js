@@ -59,10 +59,10 @@ var fetch_poems = function() {
     1000);
     setTimeout(
         function() { $("#progress_bar").animate({ width: "45%" }); },
-    2000);
+    3000);
     setTimeout(
         function() { $("#progress_bar").animate({ width: "75%" }); },
-    3000);
+    7000);
 
     $.ajax({
 
