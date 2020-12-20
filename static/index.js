@@ -54,6 +54,12 @@ var fetch_poems = function() {
 
     $("#progress_bar").css({ width: "5%" });
     $("#progress_bar").animate({ width: "15%" });
+    setTimeout(
+        function() { $("#progress_bar").animate({ width: "30%" }); },
+    1000);
+    setTimeout(
+        function() { $("#progress_bar").animate({ width: "75%" }); },
+    3000);
 
     $.ajax({
 
