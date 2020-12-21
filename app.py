@@ -94,17 +94,14 @@ def poem_generator(file, word, num_sen=6):
     poem_lst = []
     
     for i in range(num_sen):
-        rand = np.random.randint(0, sentences.shape[0], size = 30)
+        rand = np.random.randint(0, sentences.shape[0], size=30)
         docs = spacy_nlp.pipe(list(sentences.sentence.iloc[rand]))
         
         similarities = []
         for s in docs:
             similarities.append(spacy_nlp(word).similarity(s))
             
-        s_dict = {
-            'similarity' : similarities,
-            'doc_id' : sentences.doc_id.iloc[rand]
-        }
+        s_dict = {'similarity': similarities, 'doc_id': sentences.doc_id.iloc[rand]}
         
         df_sim = pd.DataFrame(s_dict, index=rand)
         df_sim = df_sim[df_sim.doc_id != poem_id]
@@ -112,13 +109,8 @@ def poem_generator(file, word, num_sen=6):
         
         s = sentences.sentence[df_sim.index[0]]
         
-        change_chars = {
-            '\n' :  '', 
-            '\r' :  '', 
-        }
-        
-        for x, y in change_chars.items():
-            s = s.replace(x, y)
+        for whitespace in ['\n', '\r']:
+            s = s.replace(whitespace, '')
         
         poem_lst.append(s)
         poem_id = df_sim.doc_id.iloc[0]
