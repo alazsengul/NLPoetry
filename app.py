@@ -29,6 +29,57 @@ poets_to_files = {
     "Roald Dahl" : "roald_dahl_poem.csv"
 }
 
+seed_words = [
+    "air",
+    "black",
+    "blue",
+    "body",
+    "brown",
+    "dark",
+    "day",
+    "deead",
+    "epoch",
+    "ethereal",
+    "eyes",
+    "face",
+    "god",
+    "gold",
+    "green",
+    "hand",
+    "heart",
+    "ineffable",
+    "iridescent",
+    "left",
+    "life",
+    "light",
+    "long",
+    "lost",
+    "love",
+    "machine",
+    "man",
+    "nefarious",
+    "night",
+    "oblivion",
+    "orange",
+    "pink",
+    "purple",
+    "quiver",
+    "reed",
+    "silver",
+    "sky",
+    "solitude",
+    "sonorous",
+    "sun",
+    "things",
+    "time",
+    "water",
+    "white",
+    "wind",
+    "world",
+    "years",
+    "yellow"
+]
+
 #
 
 @app.route('/')
@@ -83,6 +134,7 @@ def poem_format(text):
 def fetch_poems():
 
     global poets_to_files
+    global seed_words
 
     poet = random.choice(list(poets_to_files.keys()))
     poet_filename = poets_to_files[poet]
@@ -97,7 +149,7 @@ def fetch_poems():
     poem_text = random_row[2]
 
     sentences_csv = "sentences/sentences_" + poet_filename
-    fake_poem = poem_generator(file=sentences_csv, word="valor")
+    fake_poem = poem_generator(file=sentences_csv, word=random.choice(seed_words))
     fake_poem = poem_format(fake_poem)
 
     fake_poem = "<br>".join([i for i in fake_poem.lower().splitlines()])
